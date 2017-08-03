@@ -9,7 +9,7 @@ require 'vcr'
 
 RSpec.configure do |c|
   c.add_setting :test_url, default: "http://www.google.com"
-  c.add_setting :default_api_url, default: "https://igdbcom-internet-game-database-v1.p.mashape.com"
+  c.add_setting :default_api_url, default: "https://api-2445582011268.apicast.io"
 end
 
 VCR.configure do |config|
