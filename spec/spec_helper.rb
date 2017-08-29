@@ -16,5 +16,5 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.allow_http_connections_when_no_cassette = true
   config.hook_into :webmock
-  config.filter_sensitive_data("<X-Mashape-Key>") { ENV["IGDB_API_KEY"] }
+  config.filter_sensitive_data("<user-key>") { ENV["api_key"] }
 end
