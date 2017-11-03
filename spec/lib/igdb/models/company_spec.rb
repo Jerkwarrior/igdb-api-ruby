@@ -9,32 +9,41 @@ describe Igdb::Company do
 
   describe "public class methods" do
     context "responds to its methods" do
+      it { expect(subject).to respond_to(:name) }
       it { expect(subject).to respond_to(:count) }
       it { expect(subject).to respond_to(:find) }
     end
 
+
+
+
     context "executes methods correctly" do
       context "self.count" do
-        let(:response) { 
-          VCR.use_cassette("companies/count") { 
-            subject.count 
-          } 
+        let(:response) {
+          VCR.use_cassette("companies/count") {
+            subject.count
+          }
         }
 
         it "returns the number of companies in the database" do
-          expect(response).to eq(11_648)
+          expect(response).to eq(13323)
         end
       end
 
       context "self.find" do
-        let(:response) { 
-          VCR.use_cassette("companies/find") { 
-            subject.find(2_000) 
-          } 
+        let(:response) {
+          VCR.use_cassette("companies/find") {
+            subject.find(2_000)
+          }
+
         }
 
         it "returns a company" do
           expect(response).to be_a Igdb::Company
+        end
+
+        it "returns a company name" do
+          expect(response.name).to eq "Cat Daddy Games"
         end
       end
     end

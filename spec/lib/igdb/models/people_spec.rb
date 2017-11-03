@@ -17,33 +17,37 @@ describe Igdb::Person do
 
     context "executes methods correctly" do
       context "self.count" do
-        let(:response) { 
-          VCR.use_cassette("people/count") { 
-            subject.count 
-          } 
+        let(:response) {
+          VCR.use_cassette("people/count") {
+            subject.count
+          }
         }
 
         it "returns the number of games in the database" do
-          expect(response).to eq(135_074)
+          expect(response).to eq(141385)
         end
       end
 
       context "self.find" do
-        let(:response) { 
-          VCR.use_cassette("people/find") { 
-            subject.find(2_000) 
-          } 
+        let(:response) {
+          VCR.use_cassette("people/find") {
+            subject.find(2_000)
+          }
         }
 
         it "returns a person" do
           expect(response).to be_a Igdb::Person
         end
+
+        it "returns a person name" do
+          expect(response.name).to eq "Laura Battistuzzi"
+        end
       end
 
       context "self.search" do
-        let(:response) { 
-          VCR.use_cassette("people/search") { 
-            subject.search(query: "batman") 
+        let(:response) {
+          VCR.use_cassette("people/search") {
+            subject.search(query: "batman")
           }
         }
 
@@ -55,21 +59,21 @@ describe Igdb::Person do
       end
 
       context "self.all" do
-        let(:response) { 
-          VCR.use_cassette("people/all") { 
-            subject.all 
-          } 
-        }
-        
-        let(:response_with_limit) { 
-          VCR.use_cassette("people/all-limit") { 
-            subject.all(limit: 5) 
-          } 
+        let(:response) {
+          VCR.use_cassette("people/all") {
+            subject.all
+          }
         }
 
-        let(:response_with_limit_and_offset) { 
-          VCR.use_cassette("people/all-limit-and-offset") { 
-            subject.all(limit: 5, offset: 2) 
+        let(:response_with_limit) {
+          VCR.use_cassette("people/all-limit") {
+            subject.all(limit: 5)
+          }
+        }
+
+        let(:response_with_limit_and_offset) {
+          VCR.use_cassette("people/all-limit-and-offset") {
+            subject.all(limit: 5, offset: 2)
           }
         }
 

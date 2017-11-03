@@ -1,7 +1,7 @@
 module Igdb::CompanyRepresenter
   include Igdb::BaseRepresenter
 
-  property :logo, extend: Igdb::ImageRepresenter, class: OpenStruct 
+  property :logo, extend: Igdb::ImageRepresenter, class: OpenStruct
   property :description
   property :country
   property :website

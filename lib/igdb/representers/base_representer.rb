@@ -1,14 +1,12 @@
 module Igdb::BaseRepresenter
-  include Representable::JSON
 
   def self.included(base)
     base.include Representable::JSON
+    base.property :id
+    base.property :name
+    base.property :slug
+    base.property :url
+    base.property :created_at
+    base.property :updated_at
   end
-
-  property :id
-  property :name
-  property :slug
-  property :url
-  property :created_at
-  property :updated_at
 end
