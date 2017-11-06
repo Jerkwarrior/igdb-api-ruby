@@ -1,4 +1,4 @@
-module Igdb::PlatformPresenter
+module Igdb::PlatformRepresenter
   include Igdb::BaseRepresenter
 
   property :logo, extend: Igdb::ImageRepresenter, class: OpenStruct
